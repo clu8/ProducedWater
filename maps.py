@@ -14,3 +14,4 @@ def make_map(df, filename, title):
     plt.scatter(x, y, s=0.5, color='r', alpha=0.4, zorder=10)
     plt.title(title)
     plt.savefig(filename)
+    plt.close()
