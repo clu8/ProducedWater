@@ -21,7 +21,7 @@ def make_ca_map(df, filename, title):
     ca_map = Basemap(resolution='h', projection='lcc', width=1284000, height=1164000,
                      lat_1=30, lat_2=60, lat_0=37, lon_0=-120.5, rsphere=6370000)
     ca_map.bluemarble(alpha=0.8)
-    ca_map.drawcoastlines()
+    ca_map.drawcoastlines(color='#444455')
     ca_map.drawcountries()
     ca_map.drawstates()
     x, y = ca_map(df.LONGITUDE.values, df.LATITUDE.values)
