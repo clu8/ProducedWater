@@ -65,11 +65,6 @@ def make_state_dates_histogram(state, output):
     plt.savefig(output)
     plt.close()
 
-df = pd.read_csv('data/USGS_Produced_Waters_v2.2n.csv', 
-                 index_col='IDUSGS',
-                 parse_dates=['DATECOMP', 'DATESAMPLE', 'DATEANALYS'])
-print('Data loaded into pandas!')
-
 CA_MAP_OUTPUT = 'maps/CA/ca_wells_depth-{}_tds-{}.png'
 CA_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 1284000, 'height': 1164000,
                      'lat_1': 30, 'lat_2': 60, 'lat_0': 37, 'lon_0': -120.5, 'rsphere': 6370000}
@@ -78,6 +73,13 @@ CA_HIST_OUTPUT = 'plots/ca_sample_years.png'
 
 CO_MAP_OUTPUT = 'maps/CO/co_wells_depth-{}_tds-{}.png'
 CO_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 1284000, 'height': 1164000,
-                     'lat_1': 30, 'lat_2': 60, 'lat_0': 37, 'lon_0': -120.5, 'rsphere': 6370000}
+                     'lat_1': 32, 'lat_0': 38, 'lon_0': -105, 'rsphere': 6370000}
 CO_SCATTER_KWARGS = {'alpha': 0.4, 's': 5}
 CO_HIST_OUTPUT = 'plots/co_sample_years.png'
+
+df = pd.read_csv('data/USGS_Produced_Waters_v2.2n.csv', 
+                 index_col='IDUSGS',
+                 parse_dates=['DATECOMP', 'DATESAMPLE', 'DATEANALYS'])
+print('Data loaded into pandas!')
+make_state_maps('Colorado', CO_MAP_OUTPUT, CO_BASEMAP_KWARGS, CO_SCATTER_KWARGS)
+make_state_dates_histogram('Colorado', CO_MAP_OUTPUT)
