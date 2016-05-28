@@ -22,7 +22,7 @@ def make_map(df, filename, title, basemap_kwargs, scatter_kwargs):
     plt.savefig(filename)
     plt.close()
 
-US_MAP_OUTPUT = 'maps/us_wells_depth-{}_tds-{}.png'
+US_MAP_OUTPUT = 'maps/US/us_wells_depth-{}_tds-{}.png'
 US_BASEMAP_KWARGS = {'llcrnrlon': -119, 'llcrnrlat': 22, 'urcrnrlon': -64, 'urcrnrlat': 49,
                      'projection': 'lcc', 'lat_1': 33, 'lat_2': 45, 'lon_0': -95,
                      'resolution': 'i'}
@@ -70,8 +70,14 @@ df = pd.read_csv('data/USGS_Produced_Waters_v2.2n.csv',
                  parse_dates=['DATECOMP', 'DATESAMPLE', 'DATEANALYS'])
 print('Data loaded into pandas!')
 
-CA_MAP_OUTPUT = 'maps/ca_wells_depth-{}_tds-{}.png'
+CA_MAP_OUTPUT = 'maps/CA/ca_wells_depth-{}_tds-{}.png'
 CA_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 1284000, 'height': 1164000,
                      'lat_1': 30, 'lat_2': 60, 'lat_0': 37, 'lon_0': -120.5, 'rsphere': 6370000}
 CA_SCATTER_KWARGS = {'alpha': 0.4, 's': 5}
 CA_HIST_OUTPUT = 'plots/ca_sample_years.png'
+
+CO_MAP_OUTPUT = 'maps/CO/co_wells_depth-{}_tds-{}.png'
+CO_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 1284000, 'height': 1164000,
+                     'lat_1': 30, 'lat_2': 60, 'lat_0': 37, 'lon_0': -120.5, 'rsphere': 6370000}
+CO_SCATTER_KWARGS = {'alpha': 0.4, 's': 5}
+CO_HIST_OUTPUT = 'plots/co_sample_years.png'
