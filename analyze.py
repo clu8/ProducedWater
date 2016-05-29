@@ -85,6 +85,12 @@ CO_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 1284000, '
 CO_SCATTER_KWARGS = {'alpha': 0.3, 's': 5}
 CO_HIST_OUTPUT = 'plots/co_sample_years.png'
 
+TX_MAP_OUTPUT = 'maps/TX/tx_wells_depth-{}_tds-{}.png'
+TX_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 1605000, 'height': 1455000,
+                     'lat_1': 19, 'lat_0': 31, 'lon_0': -100, 'rsphere': 6370000}
+TX_SCATTER_KWARGS = {'alpha': 0.4, 's': 5}
+TX_HIST_OUTPUT = 'plots/tx_sample_years.png'
+
 df = pd.read_csv('data/USGS_Produced_Waters_v2.2n.csv', 
                  index_col='IDUSGS',
                  parse_dates=['DATECOMP', 'DATESAMPLE', 'DATEANALYS'])
@@ -101,3 +107,6 @@ make_state_dates_histogram('Wyoming', WY_HIST_OUTPUT)
 
 make_state_maps('Colorado', CO_MAP_OUTPUT, CO_BASEMAP_KWARGS, CO_SCATTER_KWARGS)
 make_state_dates_histogram('Colorado', CO_HIST_OUTPUT)
+
+make_state_maps('Texas', TX_MAP_OUTPUT, TX_BASEMAP_KWARGS, TX_SCATTER_KWARGS)
+make_state_dates_histogram('Texas', TX_HIST_OUTPUT)
