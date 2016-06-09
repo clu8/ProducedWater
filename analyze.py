@@ -91,22 +91,31 @@ TX_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 1605000, '
 TX_SCATTER_KWARGS = {'alpha': 0.4, 's': 5}
 TX_HIST_OUTPUT = 'plots/tx_sample_years.png'
 
+NM_MAP_OUTPUT = 'maps/NM/nm_wells_depth-{}_tds-{}.png'
+NM_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 963000, 'height': 873000,
+                     'lat_1': 31, 'lat_0': 34, 'lon_0': -106, 'rsphere': 6370000}
+NM_SCATTER_KWARGS = {'alpha': 0.4, 's': 5}
+NM_HIST_OUTPUT = 'plots/nm_sample_years.png'
+
 df = pd.read_csv('data/USGS_Produced_Waters_v2.2n.csv', 
                  index_col='IDUSGS',
                  parse_dates=['DATECOMP', 'DATESAMPLE', 'DATEANALYS'])
 print('Data loaded into pandas!')
 
-make_us_maps()
-make_us_dates_histogram()
+#make_us_maps()
+#make_us_dates_histogram()
 
-make_state_maps('California', CA_MAP_OUTPUT, CA_BASEMAP_KWARGS, CA_SCATTER_KWARGS)
-make_state_dates_histogram('California', CA_HIST_OUTPUT)
+#make_state_maps('California', CA_MAP_OUTPUT, CA_BASEMAP_KWARGS, CA_SCATTER_KWARGS)
+#make_state_dates_histogram('California', CA_HIST_OUTPUT)
 
-make_state_maps('Wyoming', WY_MAP_OUTPUT, WY_BASEMAP_KWARGS, WY_SCATTER_KWARGS)
-make_state_dates_histogram('Wyoming', WY_HIST_OUTPUT)
+#make_state_maps('Wyoming', WY_MAP_OUTPUT, WY_BASEMAP_KWARGS, WY_SCATTER_KWARGS)
+#make_state_dates_histogram('Wyoming', WY_HIST_OUTPUT)
 
-make_state_maps('Colorado', CO_MAP_OUTPUT, CO_BASEMAP_KWARGS, CO_SCATTER_KWARGS)
-make_state_dates_histogram('Colorado', CO_HIST_OUTPUT)
+#make_state_maps('Colorado', CO_MAP_OUTPUT, CO_BASEMAP_KWARGS, CO_SCATTER_KWARGS)
+#make_state_dates_histogram('Colorado', CO_HIST_OUTPUT)
 
-make_state_maps('Texas', TX_MAP_OUTPUT, TX_BASEMAP_KWARGS, TX_SCATTER_KWARGS)
-make_state_dates_histogram('Texas', TX_HIST_OUTPUT)
+#make_state_maps('Texas', TX_MAP_OUTPUT, TX_BASEMAP_KWARGS, TX_SCATTER_KWARGS)
+#make_state_dates_histogram('Texas', TX_HIST_OUTPUT)
+
+make_state_maps('New Mexico', NM_MAP_OUTPUT, NM_BASEMAP_KWARGS, NM_SCATTER_KWARGS)
+make_state_dates_histogram('New Mexico', NM_HIST_OUTPUT)
