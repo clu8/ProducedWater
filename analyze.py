@@ -97,6 +97,12 @@ NM_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 963000, 'h
 NM_SCATTER_KWARGS = {'alpha': 0.4, 's': 5}
 NM_HIST_OUTPUT = 'plots/nm_sample_years.png'
 
+OK_MAP_OUTPUT = 'maps/OK/ok_wells_depth-{}_tds-{}.png'
+OK_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 963000, 'height': 873000,
+                     'lat_1': 32, 'lat_0': 35, 'lon_0': -99, 'rsphere': 6370000}
+OK_SCATTER_KWARGS = {'alpha': 0.4, 's': 5}
+OK_HIST_OUTPUT = 'plots/ok_sample_years.png'
+
 df = pd.read_csv('data/USGS_Produced_Waters_v2.2n.csv', 
                  index_col='IDUSGS',
                  parse_dates=['DATECOMP', 'DATESAMPLE', 'DATEANALYS'])
@@ -117,5 +123,8 @@ print('Data loaded into pandas!')
 #make_state_maps('Texas', TX_MAP_OUTPUT, TX_BASEMAP_KWARGS, TX_SCATTER_KWARGS)
 #make_state_dates_histogram('Texas', TX_HIST_OUTPUT)
 
-make_state_maps('New Mexico', NM_MAP_OUTPUT, NM_BASEMAP_KWARGS, NM_SCATTER_KWARGS)
-make_state_dates_histogram('New Mexico', NM_HIST_OUTPUT)
+#make_state_maps('New Mexico', NM_MAP_OUTPUT, NM_BASEMAP_KWARGS, NM_SCATTER_KWARGS)
+#make_state_dates_histogram('New Mexico', NM_HIST_OUTPUT)
+
+make_state_maps('Oklahoma', OK_MAP_OUTPUT, OK_BASEMAP_KWARGS, OK_SCATTER_KWARGS)
+make_state_dates_histogram('Oklahoma', OK_HIST_OUTPUT)
