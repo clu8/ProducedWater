@@ -31,22 +31,20 @@ def make_us_maps():
     for depth in (1000, 2000, float('inf')):
         for tds in (1000, 3000, 10000, float('inf')):
             filtered = df[(df.DEPTHUPPER < depth) & (df.TDS < tds)].dropna(subset=['LATITUDE', 'LONGITUDE'])
-            print('\nDEPTHUPPER < {} ft, TDS < {} mg/L: {}'.format(depth, tds, len(filtered)))
             n_unique = filtered.WELLNAME.nunique()
-            print('Unique WELLNAME: {}'.format(n_unique))
             make_map(filtered, US_MAP_OUTPUT.format(depth, tds),
                      'Wells with DEPTHUPPER < {} ft, TDS < {} mg/L: n = {} ({} unique)'.format(depth, tds, len(filtered), n_unique),
                      US_BASEMAP_KWARGS, US_SCATTER_KWARGS)
 
-def make_state_maps(state, output, basemap_kwargs, scatter_kwargs):
+def make_state_maps(state, output, basemap_kwargs, scatter_kwargs, year_start=None):
     for depth in (1000, 2000, float('inf')):
         for tds in (1000, 3000, 10000, float('inf')):
             filtered = df[(df.DEPTHUPPER < depth) & (df.TDS < tds) & (df.STATE == state)].dropna(subset=['LATITUDE', 'LONGITUDE'])
-            print('\nDEPTHUPPER < {} ft, TDS < {} mg/L: {}'.format(depth, tds, len(filtered)))
+            if year_start is not None:
+                filtered = filtered[filtered.DATESAMPLE.dt.year >= year_start]
             n_unique = filtered.WELLNAME.nunique()
-            print('Unique WELLNAME: {}'.format(n_unique))
             make_map(filtered, output.format(depth, tds),
-                     'Wells in {} with DEPTHUPPER < {} ft, TDS < {} mg/L: n = {} ({} unique)'.format(state, depth, tds, len(filtered), n_unique),
+                     'Wells in {} with DEPTHUPPER < {} ft, TDS < {} mg/L{}: n = {} ({} unique)'.format(state, depth, tds, ', {} and after'.format(year_start) if year_start is not None else '', len(filtered), n_unique),
                      basemap_kwargs, scatter_kwargs)
 
 def make_us_dates_histogram():
@@ -78,6 +76,7 @@ WY_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 1284000, '
                      'lat_1': 38, 'lat_0': 43, 'lon_0': -107, 'rsphere': 6370000}
 WY_SCATTER_KWARGS = {'alpha': 0.4, 's': 5}
 WY_HIST_OUTPUT = 'plots/wy_sample_years.png'
+WY_2000_MAP_OUTPUT = 'maps/WY-2000/wy-2000_wells_depth-{}_tds-{}.png'
 
 CO_MAP_OUTPUT = 'maps/CO/co_wells_depth-{}_tds-{}.png'
 CO_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 1284000, 'height': 1164000,
@@ -126,5 +125,7 @@ print('Data loaded into pandas!')
 #make_state_maps('New Mexico', NM_MAP_OUTPUT, NM_BASEMAP_KWARGS, NM_SCATTER_KWARGS)
 #make_state_dates_histogram('New Mexico', NM_HIST_OUTPUT)
 
-make_state_maps('Oklahoma', OK_MAP_OUTPUT, OK_BASEMAP_KWARGS, OK_SCATTER_KWARGS)
-make_state_dates_histogram('Oklahoma', OK_HIST_OUTPUT)
+#make_state_maps('Oklahoma', OK_MAP_OUTPUT, OK_BASEMAP_KWARGS, OK_SCATTER_KWARGS)
+#make_state_dates_histogram('Oklahoma', OK_HIST_OUTPUT)
+
+make_state_maps('Wyoming', WY_2000_MAP_OUTPUT, WY_BASEMAP_KWARGS, WY_SCATTER_KWARGS, 2000)
