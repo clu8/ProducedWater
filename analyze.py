@@ -102,6 +102,18 @@ OK_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 963000, 'h
 OK_SCATTER_KWARGS = {'alpha': 0.4, 's': 5}
 OK_HIST_OUTPUT = 'plots/ok_sample_years.png'
 
+UT_MAP_OUTPUT = 'maps/UT/ut_wells_depth-{}_tds-{}.png'
+UT_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 963000, 'height': 873000,
+                     'lat_1': 33, 'lat_0': 39, 'lon_0': -111.5, 'rsphere': 6370000}
+UT_SCATTER_KWARGS = {'alpha': 0.4, 's': 5}
+UT_HIST_OUTPUT = 'plots/ut_sample_years.png'
+
+MT_MAP_OUTPUT = 'maps/MT/mt_wells_depth-{}_tds-{}.png'
+MT_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 1284000, 'height': 1164000,
+                     'lat_1': 43, 'lat_0': 47, 'lon_0': -110, 'rsphere': 6370000}
+MT_SCATTER_KWARGS = {'alpha': 0.4, 's': 5}
+MT_HIST_OUTPUT = 'plots/mt_sample_years.png'
+
 df = pd.read_csv('data/USGS_Produced_Waters_v2.2n.csv', 
                  index_col='IDUSGS',
                  parse_dates=['DATECOMP', 'DATESAMPLE', 'DATEANALYS'])
@@ -128,4 +140,10 @@ print('Data loaded into pandas!')
 #make_state_maps('Oklahoma', OK_MAP_OUTPUT, OK_BASEMAP_KWARGS, OK_SCATTER_KWARGS)
 #make_state_dates_histogram('Oklahoma', OK_HIST_OUTPUT)
 
-make_state_maps('Wyoming', WY_2000_MAP_OUTPUT, WY_BASEMAP_KWARGS, WY_SCATTER_KWARGS, 2000)
+#make_state_maps('Wyoming', WY_2000_MAP_OUTPUT, WY_BASEMAP_KWARGS, WY_SCATTER_KWARGS, 2000)
+
+#make_state_maps('Utah', UT_MAP_OUTPUT, UT_BASEMAP_KWARGS, UT_SCATTER_KWARGS)
+#make_state_dates_histogram('Utah', UT_HIST_OUTPUT)
+
+make_state_maps('Montana', MT_MAP_OUTPUT, MT_BASEMAP_KWARGS, MT_SCATTER_KWARGS)
+make_state_dates_histogram('Montana', MT_HIST_OUTPUT)
