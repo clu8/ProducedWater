@@ -114,36 +114,45 @@ MT_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 1284000, '
 MT_SCATTER_KWARGS = {'alpha': 0.4, 's': 5}
 MT_HIST_OUTPUT = 'plots/mt_sample_years.png'
 
+KS_MAP_OUTPUT = 'maps/KS/ks_wells_depth-{}_tds-{}.png'
+KS_BASEMAP_KWARGS = {'resolution': 'h', 'projection': 'lcc', 'width': 856000, 'height': 776000,
+                     'lat_1': 36, 'lat_0': 38, 'lon_0': -98.5, 'rsphere': 6370000}
+KS_SCATTER_KWARGS = {'alpha': 0.4, 's': 5}
+KS_HIST_OUTPUT = 'plots/ks_sample_years.png'
+
 df = pd.read_csv('data/USGS_Produced_Waters_v2.2n.csv', 
                  index_col='IDUSGS',
                  parse_dates=['DATECOMP', 'DATESAMPLE', 'DATEANALYS'])
 print('Data loaded into pandas!')
 
-#make_us_maps()
-#make_us_dates_histogram()
+make_us_maps()
+make_us_dates_histogram()
 
-#make_state_maps('California', CA_MAP_OUTPUT, CA_BASEMAP_KWARGS, CA_SCATTER_KWARGS)
-#make_state_dates_histogram('California', CA_HIST_OUTPUT)
+make_state_maps('California', CA_MAP_OUTPUT, CA_BASEMAP_KWARGS, CA_SCATTER_KWARGS)
+make_state_dates_histogram('California', CA_HIST_OUTPUT)
 
-#make_state_maps('Wyoming', WY_MAP_OUTPUT, WY_BASEMAP_KWARGS, WY_SCATTER_KWARGS)
-#make_state_dates_histogram('Wyoming', WY_HIST_OUTPUT)
+make_state_maps('Wyoming', WY_MAP_OUTPUT, WY_BASEMAP_KWARGS, WY_SCATTER_KWARGS)
+make_state_dates_histogram('Wyoming', WY_HIST_OUTPUT)
 
-#make_state_maps('Colorado', CO_MAP_OUTPUT, CO_BASEMAP_KWARGS, CO_SCATTER_KWARGS)
-#make_state_dates_histogram('Colorado', CO_HIST_OUTPUT)
+make_state_maps('Colorado', CO_MAP_OUTPUT, CO_BASEMAP_KWARGS, CO_SCATTER_KWARGS)
+make_state_dates_histogram('Colorado', CO_HIST_OUTPUT)
 
-#make_state_maps('Texas', TX_MAP_OUTPUT, TX_BASEMAP_KWARGS, TX_SCATTER_KWARGS)
-#make_state_dates_histogram('Texas', TX_HIST_OUTPUT)
+make_state_maps('Texas', TX_MAP_OUTPUT, TX_BASEMAP_KWARGS, TX_SCATTER_KWARGS)
+make_state_dates_histogram('Texas', TX_HIST_OUTPUT)
 
-#make_state_maps('New Mexico', NM_MAP_OUTPUT, NM_BASEMAP_KWARGS, NM_SCATTER_KWARGS)
-#make_state_dates_histogram('New Mexico', NM_HIST_OUTPUT)
+make_state_maps('New Mexico', NM_MAP_OUTPUT, NM_BASEMAP_KWARGS, NM_SCATTER_KWARGS)
+make_state_dates_histogram('New Mexico', NM_HIST_OUTPUT)
 
-#make_state_maps('Oklahoma', OK_MAP_OUTPUT, OK_BASEMAP_KWARGS, OK_SCATTER_KWARGS)
-#make_state_dates_histogram('Oklahoma', OK_HIST_OUTPUT)
+make_state_maps('Oklahoma', OK_MAP_OUTPUT, OK_BASEMAP_KWARGS, OK_SCATTER_KWARGS)
+make_state_dates_histogram('Oklahoma', OK_HIST_OUTPUT)
 
-#make_state_maps('Wyoming', WY_2000_MAP_OUTPUT, WY_BASEMAP_KWARGS, WY_SCATTER_KWARGS, 2000)
+make_state_maps('Wyoming', WY_2000_MAP_OUTPUT, WY_BASEMAP_KWARGS, WY_SCATTER_KWARGS, 2000)
 
-#make_state_maps('Utah', UT_MAP_OUTPUT, UT_BASEMAP_KWARGS, UT_SCATTER_KWARGS)
-#make_state_dates_histogram('Utah', UT_HIST_OUTPUT)
+make_state_maps('Utah', UT_MAP_OUTPUT, UT_BASEMAP_KWARGS, UT_SCATTER_KWARGS)
+make_state_dates_histogram('Utah', UT_HIST_OUTPUT)
 
 make_state_maps('Montana', MT_MAP_OUTPUT, MT_BASEMAP_KWARGS, MT_SCATTER_KWARGS)
 make_state_dates_histogram('Montana', MT_HIST_OUTPUT)
+
+make_state_maps('Kansas', KS_MAP_OUTPUT, KS_BASEMAP_KWARGS, KS_SCATTER_KWARGS)
+make_state_dates_histogram('Kansas', KS_HIST_OUTPUT)
